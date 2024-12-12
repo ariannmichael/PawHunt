@@ -11,12 +11,13 @@ public class ClickDetection : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        AnimalMovement am = eventData.pointerCurrentRaycast.gameObject.GetComponent<AnimalMovement>();
+        am.HandleClick();
     }
 
     private void AddPhysics2DRaycaster()
     {
-        Physics2DRaycaster physicsRaycaster = FindObjectOfType<Physics2DRaycaster>();
+        Physics2DRaycaster physicsRaycaster = FindFirstObjectByType<Physics2DRaycaster>();
         if (physicsRaycaster == null)
         {
             Camera.main.gameObject.AddComponent<Physics2DRaycaster>();
