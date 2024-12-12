@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AnimalMovement : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class AnimalMovement : MonoBehaviour
     public void HandleClick()
     {
         animator.Play("Animal");
+        int randomIndex = Random.Range(0, AudioManager.instance.meows.Length);
+        AudioManager.instance.PlaySFX(AudioManager.instance.meows[randomIndex]);
         clicked = true;
     }
 }
